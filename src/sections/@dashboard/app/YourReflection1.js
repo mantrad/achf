@@ -32,7 +32,7 @@ export default function YourReflection1({
       <Scrollbar>
         <Stack spacing={0} sx={{ p: 4, pr: 3 }}>
           <Stack direction="row" alignItems="center" justifyContent="space-between">
-            <Typography variant="subtitle2">Current ARES Price</Typography>
+            <Typography variant="subtitle2">Current ACH Price</Typography>
             <Typography variant="h6">{fCurrency(tokenPrice)}</Typography>
           </Stack>
           <Stack direction="row" alignItems="center" justifyContent="space-between">

@@ -42,7 +42,7 @@ export default function DashboardApp() {
       const web3 = await getWeb3();
       const accounts = await web3.eth.getAccounts();
       const MetisAddress = '0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000';
-      const MainAddress = '0x605C79b5c60A9d4675C87146d57D275624335381';
+      const MainAddress = '0xa95974910b55407D166A033173C42B4C539221a4';
       const USDCAddress = '0xEA32A96608495e54156Ae48931A7c20f0dcc1a21';
       const instance = new web3.eth.Contract(AbiContract, MainAddress);
       const instanceMetis = new web3.eth.Contract(AbiMetis, MetisAddress);

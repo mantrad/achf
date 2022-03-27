@@ -58,8 +58,8 @@ export default function AccountApp() {
       const web3 = await getWeb3();
       const accounts = await web3.eth.getAccounts();
       setAccount(accounts[0]);
-      const MainAddress = '0x605C79b5c60A9d4675C87146d57D275624335381';
-      const SubAddress = '0x5649676eaAfDD7DA01412b79f062De2c5508E9c7';
+      const MainAddress = '0xa95974910b55407D166A033173C42B4C539221a4';
+      const SubAddress = '0xbFF014Fd96bbaC2ef1b4dBBE4D548CdD26684b13';
       const MetisAddress = '0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000';
       const USDCAddress = '0xEA32A96608495e54156Ae48931A7c20f0dcc1a21';
       const instance = new web3.eth.Contract(AbiContract, MainAddress);
