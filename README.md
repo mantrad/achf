@@ -33,7 +33,7 @@
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/Achilies-kit/minimal.free/blob/main/LICENSE.md) for more information.
+Distributed under the MIT License. See [LICENSE](https://github.com/FUSEilies-kit/minimal.free/blob/main/LICENSE.md) for more information.
 
 ## Contact us
 

@@ -36,7 +36,7 @@ export default function YourReflection2({
         <Stack spacing={0} sx={{ p: 4, pr: 3 }}>
           <Stack direction="row" alignItems="center" justifyContent="space-between">
             <Typography variant="subtitle2">All In Rewards</Typography>
-            <Typography variant="h6">{fNumber(AllInRewards)} ACH</Typography>
+            <Typography variant="h6">{fNumber(AllInRewards)} FUSE</Typography>
           </Stack>
           <Stack direction="row" alignItems="center" justifyContent="space-between">
             <Typography variant="subtitle2">Total Rewards</Typography>

@@ -87,36 +87,6 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar, Web3 }
         '& .simplebar-content': { height: 1, display: 'flex', flexDirection: 'column' }
       }}
     >
-      <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>
-        <Logo />
-      </Box>
-
-      <Box sx={{ mb: 5, mx: 2.5 }}>
-        <Link underline="none" component={RouterLink} to="#">
-          {wallet ? (
-            <AccountStyle>
-              <Avatar src="./static/illustrations/metamask.png" alt="photoURL" />
-              <Box sx={{ ml: 2 }}>
-                <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                  {wallet}
-                </Typography>
-                <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                  Balance:{balance} METIS
-                </Typography>
-              </Box>
-            </AccountStyle>
-          ) : (
-            <Button variant="contained" onClick={connectWallet}>
-              Connect Wallet
-            </Button>
-          )}
-        </Link>
-      </Box>
-
-      <NavSection navConfig={sidebarConfig} />
-
-      <Box sx={{ flexGrow: 1 }} />
-
       <Box sx={{ px: 2.5, pb: 3, mt: 10 }}>
         <Stack
           alignItems="center"
@@ -128,13 +98,6 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar, Web3 }
             src="/static/logo.png"
             sx={{ width: 100, position: 'absolute', top: -50 }}
           />
-          <Button
-            href="https://achilles-finance.gitbook.io/achilles-finance/"
-            target="_blank"
-            variant="contained"
-          >
-            Document
-          </Button>
           <Stack direction="row" spacing={2}>
             <Button fullWidth size="large" color="inherit" variant="outlined" href="#">
               <Iconify icon="ic:twotone-discord" color="#DF3E30" height={24} />
@@ -145,7 +108,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar, Web3 }
               size="large"
               color="inherit"
               variant="outlined"
-              href="https://t.me/achillesfinance"
+              href="https://t.me/fuseprotocolofc"
             >
               <Iconify icon="logos:telegram" color="#1877F2" height={24} />
             </Button>
@@ -155,13 +118,16 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar, Web3 }
               size="large"
               color="inherit"
               variant="outlined"
-              href="https://twitter.com/achillesmetis/"
+              href="https://twitter.com/fuseprotocolofc"
             >
               <Iconify icon="eva:twitter-fill" color="#1C9CEA" height={24} />
             </Button>
           </Stack>
         </Stack>
       </Box>
+
+      <NavSection navConfig={sidebarConfig} />
+      <Box sx={{ flexGrow: 1 }} />
     </Scrollbar>
   );
 

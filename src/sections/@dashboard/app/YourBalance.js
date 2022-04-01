@@ -31,7 +31,7 @@ export default function YourBalance({ totalBalance, totalBalanceUSD }) {
       </Typography>
       <Typography variant="h3">{fCurrency(totalBalanceUSD)}</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-        {fNumber(totalBalance)} $ACH
+        {fNumber(totalBalance)} $FUSE
       </Typography>
     </RootStyle>
   );

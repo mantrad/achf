@@ -26,7 +26,7 @@ export default function Insurance({ Insurance }) {
   return (
     <RootStyle>
       <Typography variant="subtitle1" sx={{ opacity: 0.72 }}>
-        ACH Insurance Fund Value
+        FUSE Insurance Fund Value
       </Typography>
       <Typography variant="h3">{fCurrency(Insurance)}</Typography>
     </RootStyle>

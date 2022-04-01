@@ -25,15 +25,15 @@ export default function YourReflection({ maxTx, send, receive }) {
         <Stack spacing={0} sx={{ p: 4, pr: 3 }}>
           <Stack direction="row" alignItems="center" justifyContent="space-between">
             <Typography variant="subtitle2">Max wallet limit</Typography>
-            <Typography variant="h6">{fNumber(maxTx)} ACH</Typography>
+            <Typography variant="h6">{fNumber(maxTx)} FUSE</Typography>
           </Stack>
           <Stack direction="row" alignItems="center" justifyContent="space-between">
             <Typography variant="subtitle2">Remaining to receive</Typography>
-            <Typography variant="h6">{fNumber(send)} ACH</Typography>
+            <Typography variant="h6">{fNumber(send)} FUSE</Typography>
           </Stack>
           <Stack direction="row" alignItems="center" justifyContent="space-between">
             <Typography variant="subtitle2">Remaining to send</Typography>
-            <Typography variant="h6">{fNumber(receive)} ACH</Typography>
+            <Typography variant="h6">{fNumber(receive)} FUSE</Typography>
           </Stack>
         </Stack>
       </Scrollbar>

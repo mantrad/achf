@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 // material
 import { alpha, styled } from '@mui/material/styles';
-import { Box, Stack, AppBar, Toolbar, IconButton } from '@mui/material';
+import { Box, Stack, AppBar, Toolbar, IconButton, Button } from '@mui/material';
 // components
 import Iconify from '../../components/Iconify';
 //
@@ -37,10 +39,31 @@ const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 DashboardNavbar.propTypes = {
-  onOpenSidebar: PropTypes.func
+  onOpenSidebar: PropTypes.func,
+  Web3: PropTypes.object
 };
 
-export default function DashboardNavbar({ onOpenSidebar }) {
+export default function DashboardNavbar({ onOpenSidebar, Web3 }) {
+  const { pathname } = useLocation();
+  const [wallet, setWallet] = useState(null);
+  const [balance, setBalance] = useState(null);
+
+  useEffect(() => {
+    const connectWallet = async () => {
+      if (Web3) {
+        const accounts = await Web3.eth.getAccounts();
+        if (accounts) {
+          const balance = await Web3.eth.getBalance(accounts[0]);
+          const account = accounts[0].replace(accounts[0].slice(6, 37), '...');
+          setBalance((balance / 1e18).toFixed(2));
+          setWallet(account);
+        }
+      }
+    };
+    connectWallet();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname, Web3]);
+
   return (
     <RootStyle>
       <ToolbarStyle>
@@ -51,6 +74,20 @@ export default function DashboardNavbar({ onOpenSidebar }) {
           <Iconify icon="eva:menu-2-fill" />
         </IconButton>
         <Box sx={{ flexGrow: 1 }} />
+        <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
+          <Button
+            variant="contained"
+            href="https://fuseprotocol.gitbook.io/fuseprotocol/"
+            target="_blank"
+          >
+            Document
+          </Button>
+          {wallet ? (
+            <Button variant="contained">{wallet}</Button>
+          ) : (
+            <Button variant="contained">Connect Wallet</Button>
+          )}
+        </Stack>
       </ToolbarStyle>
     </RootStyle>
   );

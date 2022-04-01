@@ -26,7 +26,7 @@ export default function Price({ Price }) {
   return (
     <RootStyle>
       <Typography variant="subtitle1" sx={{ opacity: 0.72 }}>
-        ACH Price
+        FUSE Price
       </Typography>
       <Typography variant="h3">${fShortenNumber(Price)}</Typography>
     </RootStyle>

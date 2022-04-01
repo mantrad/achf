@@ -84,7 +84,7 @@ export default function Overview({ Overview }) {
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6} md={4}>
           <Typography variant="subtitle1">
-            ACH Price
+            FUSE Price
             <Typography variant="subtitle1">{fCurrency(Overview.tokenPrice)}</Typography>
           </Typography>
         </Grid>

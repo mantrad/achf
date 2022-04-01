@@ -53,7 +53,7 @@ export default function DashboardLayout() {
   };
   return (
     <RootStyle>
-      <DashboardNavbar onOpenSidebar={() => setOpen(true)} />
+      <DashboardNavbar onOpenSidebar={() => setOpen(true)} Web3={web3} />
       <DashboardSidebar isOpenSidebar={open} onCloseSidebar={() => setOpen(false)} Web3={web3} />
       <MainStyle>
         <Outlet />

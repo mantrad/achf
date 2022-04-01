@@ -9,7 +9,7 @@ function createGradient(color1, color2) {
 // SETUP COLORS
 const GREY = {
   0: '#FFFFFF',
-  100: '#F9FAFB',
+  100: '#000',
   200: '#F4F6F8',
   300: '#DFE3E8',
   400: '#C4CDD5',
@@ -29,11 +29,11 @@ const GREY = {
 };
 
 const PRIMARY = {
-  lighter: '#C8FACD',
+  lighter: '#212b36',
   light: '#5BE584',
-  main: '#00AB55',
+  main: '#06fcac',
   dark: '#007B55',
-  darker: '#005249',
+  darker: '#fff',
   contrastText: '#fff'
 };
 const SECONDARY = {

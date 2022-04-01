@@ -28,7 +28,7 @@ export default function FirePit({ FirePit }) {
       <Typography variant="subtitle1" sx={{ opacity: 0.72 }}>
         # Value of FirePit
       </Typography>
-      <Typography variant="h3">{fNumber(FirePit)} ACH</Typography>
+      <Typography variant="h3">{fNumber(FirePit)} FUSE</Typography>
     </RootStyle>
   );
 }

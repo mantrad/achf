@@ -114,12 +114,12 @@ export default function DashboardApp() {
       setFirePitPercent(percentFirepit);
       setOverview(data);
     } catch (error) {
-      alert(`Some bug here. Please contract with dev`);
+      alert(`Please connect with Metamask!`);
       console.error(error);
     }
   };
   return (
-    <Page title="Account | Achilies">
+    <Page title="Account | FUSEilies">
       <Container maxWidth="xl">
         <Grid container spacing={3}>
           <Grid item xs={12} sm={12} md={12}>

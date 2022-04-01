@@ -20,10 +20,10 @@ export default function Logo({ isReferred }) {
         <>
           <Box
             component="img"
-            src="./static/illustrations/logo-Achilies.png"
+            src="./static/illustrations/logo-FUSEilies.png"
             sx={{ mx: 'auto', height: '260px' }}
           />
-          <Typography variant="h3">You are Achilies</Typography>
+          <Typography variant="h3">You are FUSEilies</Typography>
           <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
             Get infected, buy tokens, and then infect others. May the best superspreader win!
           </Typography>

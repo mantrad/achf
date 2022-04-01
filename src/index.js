@@ -21,7 +21,7 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// If you want to enable client cache, register instead.
+// If you want to enable client cFUSEe, register instead.
 serviceWorker.unregister();
 
 // If you want to start measuring performance in your app, pass a function

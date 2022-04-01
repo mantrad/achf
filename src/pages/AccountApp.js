@@ -64,7 +64,7 @@ export default function AccountApp() {
       const USDCAddress = '0xEA32A96608495e54156Ae48931A7c20f0dcc1a21';
       const instance = new web3.eth.Contract(AbiContract, MainAddress);
       const instanceSub = new web3.eth.Contract(AbiSubContract, SubAddress);
-      setContract(instanceSub);
+      setContract(instance);
       const router = await instance.methods.router().call();
       const instanceRouter = new web3.eth.Contract(AbiRouter, router);
       const AmountsOutToken = await instanceRouter.methods
@@ -141,16 +141,15 @@ export default function AccountApp() {
       setCountDown(countDown);
       setWeb3(web3);
     } catch (error) {
-      alert(`Some bug here. Please contract with dev`);
+      alert(`Please connect with metamask`);
       console.error(error);
     }
   };
   const claim = () => {
-    console.log(contract);
-    contract.methods.claimDividend().send({ from: account });
+    contract.methods.claim().send({ from: account });
   };
   return (
-    <Page title="Account | Achilies">
+    <Page title="Account | FUSEilies">
       <Container maxWidth="xl">
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={4}>
