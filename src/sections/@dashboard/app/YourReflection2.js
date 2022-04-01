@@ -12,7 +12,7 @@ import Iconify from '../../../components/Iconify';
 
 YourReflection2.propTypes = {
   AllInRewards: PropTypes.number,
-  TotalRewards: PropTypes.number,
+  TotalRewards: PropTypes.string,
   DistributedRewards: PropTypes.number,
   FromLastReward: PropTypes.string,
   RewardPeriod: PropTypes.string,

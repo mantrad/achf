@@ -129,7 +129,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar, Web3 }
             sx={{ width: 100, position: 'absolute', top: -50 }}
           />
           <Button
-            href="https://traderjoexyz.com/trade?outputCurrency=0x11aBbc60C4E471f3B55babb4Dc0b456ade0c1306"
+            href="https://achilles-finance.gitbook.io/achilles-finance/"
             target="_blank"
             variant="contained"
           >
@@ -145,7 +145,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar, Web3 }
               size="large"
               color="inherit"
               variant="outlined"
-              href="https://t.me/werewolfDAO"
+              href="https://t.me/achillesfinance"
             >
               <Iconify icon="logos:telegram" color="#1877F2" height={24} />
             </Button>
@@ -155,7 +155,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar, Web3 }
               size="large"
               color="inherit"
               variant="outlined"
-              href="https://twitter.com/Werewolf_Dao"
+              href="https://twitter.com/achillesmetis/"
             >
               <Iconify icon="eva:twitter-fill" color="#1C9CEA" height={24} />
             </Button>

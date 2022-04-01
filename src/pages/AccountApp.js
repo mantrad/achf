@@ -73,7 +73,6 @@ export default function AccountApp() {
       const AmountsOutUSD = await instanceRouter.methods
         .getAmountsOut(AmountsOutToken[1], [MetisAddress, USDCAddress])
         .call();
-
       const tokenPrice = AmountsOutUSD[1] / 1e6;
       const fixedAPY = 0.0002355;
       const dailyAPY = ((1 + 0.0002355) ** 96 - 1) * 100;
@@ -98,30 +97,30 @@ export default function AccountApp() {
       const getRemainingTimeToBeRewarded = await instanceSub.methods
         .getRemainingTimeToBeRewarded(accounts[0])
         .call();
-      const totalDividendsUSD = await instanceRouter.methods
-        .getAmountsOut(totalDividends, [MetisAddress, USDCAddress])
-        .call();
-      const totalDistributedUSD = await instanceRouter.methods
-        .getAmountsOut(totalDistributed, [MetisAddress, USDCAddress])
-        .call();
-      if (getUnpaidEarnings > 0) {
-        const getUnpaidEarningsUSD = await instanceRouter.methods
-          .getAmountsOut(getUnpaidEarnings, [MetisAddress, USDCAddress])
+      if (totalDividends > 0) {
+        const totalDividendsUSD = await instanceRouter.methods
+          .getAmountsOut(totalDividends, [MetisAddress, USDCAddress])
           .call();
-        setToberewarded(getUnpaidEarningsUSD[1] / 1e6);
+        setTotalRewards(totalDividendsUSD[1] / 1e6);
       } else {
-        setToberewarded(getUnpaidEarnings);
+        setTotalRewards(totalDividends);
+      }
+      console.log(totalDistributed);
+      if (totalDistributed > 0) {
+        const totalDistributedUSD = await instanceRouter.methods
+          .getAmountsOut(totalDistributed, [MetisAddress, USDCAddress])
+          .call();
+        setDistributedRewards(totalDistributedUSD[1] / 1e6);
+      } else {
+        setDistributedRewards(0);
       }
       if (getRemainingTimeToBeRewarded < 0 || getRemainingTimeToBeRewarded > 1e6) {
         setFromLastReward(`Never Rewarded`);
       } else {
         setFromLastReward(moment.unix(getRemainingTimeToBeRewarded).startOf('hour').fromNow());
       }
-      console.log(moment.unix(getRemainingTimeToBeRewarded).startOf('hour').fromNow());
       setRewardedsofar((shares.totalRealised / 1e5) * tokenPrice);
       setallInRewards(totalShares / 1e5);
-      setTotalRewards(totalDividendsUSD[1] / 1e6);
-      setDistributedRewards(totalDistributedUSD[1] / 1e6);
       setRewardPeriod(minPeriod);
       setTokenPrice(tokenPrice);
       setNextRewardYield(0.0002355 * 100);

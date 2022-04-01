@@ -57,26 +57,40 @@ export default function DashboardApp() {
         .call();
       const tokenPrice = AmountsOutUSD[1] / 1e6;
       const totalSupply = await instance.methods.totalSupply().call();
-      const firePitAddr = await instance.methods.firePit().call();
+      const firePitAddr = await instance.methods.blackHole().call();
       const pairAddr = await instance.methods.pair().call();
       const treasuryAddr = await instance.methods.treasuryReceiver().call();
-      const insuranceAddr = await instance.methods.AresInsuranceFundReceiver().call();
+      const insuranceAddr = await instance.methods.InsuranceFundReceiver().call();
       const firePitBalance = await instance.methods.balanceOf(firePitAddr).call();
       const treasuryBalance = await instanceMetis.methods.balanceOf(treasuryAddr).call();
       const insuranceBalance = await instanceMetis.methods.balanceOf(insuranceAddr).call();
-      const treasuryAmountsOutUSD = await instanceRouter.methods
-        .getAmountsOut(treasuryBalance, [MetisAddress, USDCAddress])
-        .call();
-      const firePitAmountsOutUSD = await instanceRouter.methods
-        .getAmountsOut(firePitBalance, [MetisAddress, USDCAddress])
-        .call();
-      const insuranceAmountsOutUSD = await instanceRouter.methods
-        .getAmountsOut(insuranceBalance, [MetisAddress, USDCAddress])
-        .call();
+      if (treasuryBalance / 1e18 > 0.01) {
+        const treasuryAmountsOutUSD = await instanceRouter.methods
+          .getAmountsOut(treasuryBalance, [MetisAddress, USDCAddress])
+          .call();
+        setTreasuryAmountUSD(treasuryAmountsOutUSD[1] / 1e6);
+      } else {
+        setTreasuryAmountUSD(0);
+      }
+      if (firePitBalance > 0) {
+        const firePitAmountsOutUSD = await instanceRouter.methods
+          .getAmountsOut(firePitBalance, [MetisAddress, USDCAddress])
+          .call();
+        setFirePitAmountUSD(firePitAmountsOutUSD[0] / 1e6);
+      } else {
+        setFirePitAmountUSD(0);
+      }
+      if (insuranceBalance > 0) {
+        const insuranceAmountsOutUSD = await instanceRouter.methods
+          .getAmountsOut(insuranceBalance, [MetisAddress, USDCAddress])
+          .call();
+        setInsurance(insuranceAmountsOutUSD[1] / 1e6);
+      } else {
+        setInsurance(0);
+      }
       const instancePair = new web3.eth.Contract(AbiPair, pairAddr);
       const reserve = await instancePair.methods.getReserves().call();
       const poolValue = (reserve.reserve0 / 1e8) * tokenPrice;
-      const lastRebasedTime = await instance.methods._lastRebasedTime().call();
       const initRebaseStartTime = await instance.methods._initRebaseStartTime().call();
       const circulatingSupply = (totalSupply - firePitBalance) / 1e5;
       const marketCap = tokenPrice * circulatingSupply;
@@ -95,14 +109,10 @@ export default function DashboardApp() {
       setContract(instance);
       setWeb3(web3);
       setTokenPrice(tokenPrice);
-      setTreasuryAmountUSD(treasuryAmountsOutUSD[1] / 1e6);
       setFirePitAmount(firePitBalance / 1e5);
-      setFirePitAmountUSD(firePitAmountsOutUSD[0] / 1e6);
-      setInsurance(insuranceAmountsOutUSD[1] / 1e6);
       setPoolValue(poolValue);
       setFirePitPercent(percentFirepit);
       setOverview(data);
-      console.log(countDown);
     } catch (error) {
       alert(`Some bug here. Please contract with dev`);
       console.error(error);
