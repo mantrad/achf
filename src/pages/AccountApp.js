@@ -58,20 +58,20 @@ export default function AccountApp() {
       const web3 = await getWeb3();
       const accounts = await web3.eth.getAccounts();
       setAccount(accounts[0]);
-      const MainAddress = '0xa95974910b55407D166A033173C42B4C539221a4';
-      const SubAddress = '0xbFF014Fd96bbaC2ef1b4dBBE4D548CdD26684b13';
-      const MetisAddress = '0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000';
-      const USDCAddress = '0xEA32A96608495e54156Ae48931A7c20f0dcc1a21';
+      const MainAddress = '';
+      const SubAddress = '';
+      const AvaxAddress = '0xd4675f1f6def698fb349047c7404db2eb08140bf';
+      const USDCAddress = '0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e';
       const instance = new web3.eth.Contract(AbiContract, MainAddress);
       const instanceSub = new web3.eth.Contract(AbiSubContract, SubAddress);
       setContract(instance);
       const router = await instance.methods.router().call();
       const instanceRouter = new web3.eth.Contract(AbiRouter, router);
       const AmountsOutToken = await instanceRouter.methods
-        .getAmountsOut(100000, [MainAddress, MetisAddress])
+        .getAmountsOut(100000, [MainAddress, AvaxAddress])
         .call();
       const AmountsOutUSD = await instanceRouter.methods
-        .getAmountsOut(AmountsOutToken[1], [MetisAddress, USDCAddress])
+        .getAmountsOut(AmountsOutToken[1], [AvaxAddress, USDCAddress])
         .call();
       const tokenPrice = AmountsOutUSD[1] / 1e6;
       const fixedAPY = 0.0002355;
@@ -99,7 +99,7 @@ export default function AccountApp() {
         .call();
       if (totalDividends > 0) {
         const totalDividendsUSD = await instanceRouter.methods
-          .getAmountsOut(totalDividends, [MetisAddress, USDCAddress])
+          .getAmountsOut(totalDividends, [AvaxAddress, USDCAddress])
           .call();
         setTotalRewards(totalDividendsUSD[1] / 1e6);
       } else {
@@ -108,7 +108,7 @@ export default function AccountApp() {
       console.log(totalDistributed);
       if (totalDistributed > 0) {
         const totalDistributedUSD = await instanceRouter.methods
-          .getAmountsOut(totalDistributed, [MetisAddress, USDCAddress])
+          .getAmountsOut(totalDistributed, [AvaxAddress, USDCAddress])
           .call();
         setDistributedRewards(totalDistributedUSD[1] / 1e6);
       } else {

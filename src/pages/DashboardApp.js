@@ -41,19 +41,19 @@ export default function DashboardApp() {
     try {
       const web3 = await getWeb3();
       const accounts = await web3.eth.getAccounts();
-      const MetisAddress = '0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000';
-      const MainAddress = '0xa95974910b55407D166A033173C42B4C539221a4';
-      const USDCAddress = '0xEA32A96608495e54156Ae48931A7c20f0dcc1a21';
+      const AvaxAddress = '0xd4675f1f6def698fb349047c7404db2eb08140bf';
+      const MainAddress = '';
+      const USDCAddress = '0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e';
       const instance = new web3.eth.Contract(AbiContract, MainAddress);
-      const instanceMetis = new web3.eth.Contract(AbiMetis, MetisAddress);
+      const instanceMetis = new web3.eth.Contract(AbiMetis, AvaxAddress);
       const router = await instance.methods.router().call();
       const decimals = await instance.methods.decimals().call();
       const instanceRouter = new web3.eth.Contract(AbiRouter, router);
       const AmountsOutToken = await instanceRouter.methods
-        .getAmountsOut(100000, [MainAddress, MetisAddress])
+        .getAmountsOut(100000, [MainAddress, AvaxAddress])
         .call();
       const AmountsOutUSD = await instanceRouter.methods
-        .getAmountsOut(AmountsOutToken[1], [MetisAddress, USDCAddress])
+        .getAmountsOut(AmountsOutToken[1], [AvaxAddress, USDCAddress])
         .call();
       const tokenPrice = AmountsOutUSD[1] / 1e6;
       const totalSupply = await instance.methods.totalSupply().call();
@@ -66,7 +66,7 @@ export default function DashboardApp() {
       const insuranceBalance = await instanceMetis.methods.balanceOf(insuranceAddr).call();
       if (treasuryBalance / 1e18 > 0.01) {
         const treasuryAmountsOutUSD = await instanceRouter.methods
-          .getAmountsOut(treasuryBalance, [MetisAddress, USDCAddress])
+          .getAmountsOut(treasuryBalance, [AvaxAddress, USDCAddress])
           .call();
         setTreasuryAmountUSD(treasuryAmountsOutUSD[1] / 1e6);
       } else {
@@ -74,7 +74,7 @@ export default function DashboardApp() {
       }
       if (firePitBalance > 0) {
         const firePitAmountsOutUSD = await instanceRouter.methods
-          .getAmountsOut(firePitBalance, [MetisAddress, USDCAddress])
+          .getAmountsOut(firePitBalance, [AvaxAddress, USDCAddress])
           .call();
         setFirePitAmountUSD(firePitAmountsOutUSD[0] / 1e6);
       } else {
@@ -82,7 +82,7 @@ export default function DashboardApp() {
       }
       if (insuranceBalance > 0) {
         const insuranceAmountsOutUSD = await instanceRouter.methods
-          .getAmountsOut(insuranceBalance, [MetisAddress, USDCAddress])
+          .getAmountsOut(insuranceBalance, [AvaxAddress, USDCAddress])
           .call();
         setInsurance(insuranceAmountsOutUSD[1] / 1e6);
       } else {
